@@ -38,7 +38,7 @@ app.use('/api', (req, res, next) => {
 });
 
 app.get('/api/expenses', async (req, res) => {
-  const [rows] = await pool.query('SELECT id, DATE_FORMAT(spent_on, "%Y-%m-%d") AS spent_on, paid_by, amount, description, category FROM expenses ORDER BY spent_on DESC, id DESC');
+  const [rows] = await pool.query("SELECT id, DATE_FORMAT(spent_on, '%Y-%m-%d') AS spent_on, paid_by, amount, description, category FROM expenses ORDER BY spent_on DESC, id DESC");
   res.json(rows.map(r => ({ ...r, amount: Number(r.amount) })));
 });
 
