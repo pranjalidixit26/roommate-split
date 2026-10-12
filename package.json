@@ -1,0 +1,19 @@
+{
+  "name": "roommate-split",
+  "version": "1.0.0",
+  "description": "Run locally:\r 1. Create an empty MySQL database called roommate_split (XAMPP is fine).\r 2. npm install\r 3. Set PEOPLE=YourName,FriendName and APP_PIN=1234 (optional), then npm start\r 4. Open http://localhost:3000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.5"
+  }
+}
