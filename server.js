@@ -9,9 +9,11 @@ app.use(express.json());
 // Settings come from environment variables so nothing private lives in the code.
 const PIN = process.env.APP_PIN || '';                                   // shared passcode (optional but recommended)
 const PEOPLE = (process.env.PEOPLE || 'Me,Friend').split(',').map(s => s.trim());
+const dbUrl = process.env.MYSQL_URL || process.env.DATABASE_URL;
 const pool = mysql.createPool(
-  process.env.MYSQL_URL || process.env.DATABASE_URL ||
-  { host: 'localhost', user: 'root', password: '', database: 'roommate_split' }
+  dbUrl
+    ? { uri: dbUrl, ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined }
+    : { host: 'localhost', user: 'root', password: '', database: 'roommate_split' }
 );
 
 async function init() {
